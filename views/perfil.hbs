@@ -1,0 +1,15 @@
+<h2 class='text-center my-4'>{{user.userName}}</h2>
+<p class='text-center'>Edita aquí tu perfil</p>
+<div class='my-2 text-center'>
+   {{#if imagen}}
+      <img src='./assets/perfiles/{{imagen}}' class='rounded-circle' width='200' height='200' />
+   {{else}}
+      <img src='./assets/perfiles/default.jpg' class='rounded-circle' width='200' height='200' />
+   {{/if}}
+</div>
+
+<form action='/perfil?_csrf={{csrfToken}}' method='POST' enctype='multipart/form-data'>
+   {{!-- <input type='hidden' name='_csrf' value='{{csrfToken}}' /> --}}
+   <input class='form-control form-control-sm' id='formFileSm' type='file' name='myFile' />
+   <button class='btn btn-dark'>Cambiar imágen de perfil</button>
+</form>

@@ -1,14 +1,18 @@
 const express = require('express');
+const { leerUrls, agregarUrl, eliminarUrl, editarUrl, editarUrlForm, redireccionamiento } = require('../controllers/homeController');
+const { formPerfil, editarFotoPerfil } = require('../controllers/perfilController');
+const validarUrl = require('../middlewares/urlValidar');
+const { usuarioAutenticado } = require('../middlewares/verificarUser');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-   const urls = [
-      { origin: 'www.google.com/pepe', shortUrl: 'sasa' },
-      { origin: 'www.google.com/oeeoeeo', shortUrl: 'tete' },
-      { origin: 'www.google.com/pepe/lista', shortUrl: 'lele' },
-      { origin: 'www.google.com/pepe/lista/unamas', shortUrl: 'masasa' },
-   ];
-   res.render('home', { urls: urls }); //Asignación del contenido a mostrar en main.hbs
-});
+router.get('/', usuarioAutenticado, leerUrls);
+router.post('/', usuarioAutenticado, validarUrl, agregarUrl);
+router.get('/eliminar/:id', usuarioAutenticado, eliminarUrl);
+router.get('/editar/:id', usuarioAutenticado, editarUrlForm);
+router.post('/editar/:id', usuarioAutenticado, validarUrl, editarUrl);
+router.get('/short/:shortURL', redireccionamiento);
+
+router.get('/perfil', usuarioAutenticado, formPerfil);
+router.post('/perfil', usuarioAutenticado, editarFotoPerfil);
 
 module.exports = router;

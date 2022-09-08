@@ -14,8 +14,10 @@
    </head>
    <body>
       {{> Navbar}}
-      <h1>Esta es una plantilla</h1>
       <div class='container mt3'>
+         {{#each mensajes }}
+            <div class="alert alert-dark my-2">{{ this.msg }}</div>
+         {{/each}}
       {{! con body asignamos el cuerpo del archivo a renderizar }}
          {{{body}}}
       </div>

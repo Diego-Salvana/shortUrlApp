@@ -1,0 +1,38 @@
+<h2 class='text-center my-4'>Registrarse</h2>
+
+<div class='row justify-content-center'>
+   <div class='col-lg-6'>
+      <form action='/auth/register' method='POST'>
+         <input type='hidden' name='_csrf' value='{{csrfToken}}' />
+         <input
+            type='text'
+            name='userName'
+            placeholder='Ingerese nombre'
+            class='form-control mb-2'
+            value='pepe'
+         />
+         <input
+            type='text'
+            name='email'
+            placeholder='Ingerese email'
+            class='form-control mb-2'
+            value='pepe@gmail.com'
+         />
+         <input
+            type='password'
+            name='password'
+            placeholder='Ingerese contraseña'
+            class='form-control mb-2'
+            value='123456'
+         />
+         <input
+            type='password'
+            name='repassword'
+            placeholder='Repita contraseña'
+            class='form-control mb-2'
+            value='123456'
+         />
+         <button type='submit' class='btn btn-success w-100'>Crear Cuenta</button>
+      </form>
+   </div>
+</div>
